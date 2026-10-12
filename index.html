@@ -1,1 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DAILYPICKZ | Shop Smart</title>
+<style>
+:root {
+  --navy: #101c3a;
+  --orange: #ff7900;
+  --white: #ffffff;
+  --light: #f4f6fa;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: Arial, sans-serif;
+  background: var(--light);
+  color: #222;
+}
+header {
+  background: var(--navy);
+  color: white;
+  padding: 17px 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.logo {
+  font-size: 25px;
+  font-weight: 900;
+  letter-spacing: -1px;
+}
+.logo span {
+  color: var(--orange);
+}
+.cart-button {
+  background: var(--orange);
+  color: white;
+  border: 0;
+  padding: 11px 16px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.search-area {
+  padding: 22px 5%;
+  background: white;
+}
+.search-area input {
+  width: 100%;
+  max-width: 650px;
+  display: block;
+  margin: auto;
+  padding: 14px;
+  border: 1px solid #ddd;
+  border-radius: 9px;
+  font-size: 16px;
+}
+.hero {
+  margin: 20px 5%;
+  padding: 35px 25px;
+  border-radius: 15px;
+  background: linear-gradient(120deg, #101c3a, #263f75);
+  color: white;
+}
+.hero h1 {
+  font-size: clamp(28px, 6vw, 44px);
+  margin-bottom: 12px;
+}
+.hero p {
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+.shop-button {
+  display: inline-block;
+  background: var(--orange);
+  color: white;
+  padding: 13px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+}
+.section-title {
+  margin: 28px 5% 18px;
+  font-size: 24px;
+  color: var(--navy);
+}
+.products {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin: 0 5% 35px;
+}
+.product {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 3px 12px #0000000d;
+}
+.product-image {
+  height: 145px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #edf0f6;
+  font-size: 65px;
+}
+.product-info {
+  padding: 13px;
+}
+.product h3 {
+  font-size: 15px;
+  margin-bottom: 9px;
+}
+.price {
+  color: var(--orange);
+  font-size: 18px;
+  font-weight: 900;
+  margin-bottom: 12px;
+}
+.add-button {
+  width: 100%;
+  border: 0;
+  border-radius: 7px;
+  background: var(--navy);
+  color: white;
+  padding: 11px 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+footer {
+  background: var(--navy);
+  color: white;
+  text-align: center;
+  padding: 25px 15px;
+  line-height: 1.8;
+}
+footer span {
+  color: var(--orange);
+}
+@media (min-width: 650px) {
+  .products {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .product-image {
+    height: 180px;
+  }
+}
+</style>
+</head>
+<body>
 
+<header>
+  <div class="logo">DAILY<span>PICKZ</span></div>
+  <button class="cart-button" onclick="showCart()">
+    🛒 Cart (<span id="cart-count">0</span>)
+  </button>
+</header>
+
+<div class="search-area">
+  <input id="search" type="search"
+    placeholder="🔍 Search for products..."
+    oninput="filterProducts()">
+</div>
+
+<section class="hero">
+  <h1>Shop Smart.<br>Pick Better.</h1>
+  <p>Discover amazing products at great prices.
+     Your next favourite item is waiting for you.</p>
+  <a href="#products" class="shop-button">Shop Now →</a>
+</section>
+
+<h2 class="section-title" id="products">🔥 Featured Products</h2>
+
+<main class="products" id="product-list"></main>
+
+<footer>
+  <h2>DAILY<span>PICKZ</span></h2>
+  <p>Your daily destination for great deals.</p>
+  <p>Contact us to place your order.</p>
+  <p>© 2026 DAILYPICKZ. All rights reserved.</p>
+</footer>
+
+<script>
+const products = [
+  {id:1, name:"Smartphone", price:185000, emoji:"📱"},
+  {id:2, name:"Wireless Earbuds", price:12000, emoji:"🎧"},
+  {id:3, name:"Smart Watch", price:18000, emoji:"⌚"},
+  {id:4, name:"School Backpack", price:15000, emoji:"🎒"},
+  {id:5, name:"Portable Speaker", price:22000, emoji:"🔊"},
+  {id:6, name:"Sneakers", price:25000, emoji:"👟"},
+  {id:7, name:"Travel Bag", price:20000, emoji:"👜"},
+  {id:8, name:"Tablet", price:110000, emoji:"📲"}
+];
+
+let cart = [];
+
+function naira(amount) {
+  return "₦" + amount.toLocaleString("en-NG");
+}
+
+function displayProducts(items) {
+  const list = document.getElementById("product-list");
+
+  if (!items.length) {
+    list.innerHTML = "<p>No products found.</p>";
+    return;
+  }
+
+  list.innerHTML = items.map(p => `
+    <article class="product">
+      <div class="product-image">${p.emoji}</div>
+      <div class="product-info">
+        <h3>${p.name}</h3>
+        <div class="price">${naira(p.price)}</div>
+        <button class="add-button"
+          onclick="addToCart(${p.id})">Add to Cart</button>
+      </div>
+    </article>
+  `).join("");
+}
+
+function filterProducts() {
+  const query = document.getElementById("search").value.toLowerCase();
+  displayProducts(products.filter(p => p.name.toLowerCase().includes(query)));
+}
+
+function addToCart(id) {
+  const product = products.find(p => p.id === id);
+  cart.push(product);
+  document.getElementById("cart-count").textContent = cart.length;
+  alert(product.name + " added to your cart!");
+}
+
+function showCart() {
+  if (!cart.length) {
+    alert("Your cart is empty.");
+    return;
+  }
+
+  const summary = cart.map(p => p.name + " — " + naira(p.price)).join("\n");
+  const total = cart.reduce((sum, p) => sum + p.price, 0);
+
+  alert("YOUR CART\n\n" + summary + "\n\nTOTAL: " + naira(total) +
+    "\n\nOrdering and payment will be added in the next stage.");
+}
+
+displayProducts(products);
+</script>
+
+</body>
+</html>
