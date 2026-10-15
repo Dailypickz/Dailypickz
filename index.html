@@ -1,659 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DAILYPICKZ | Shop Smart</title>
-
-<style>
-:root {
-  --navy: #101c3a;
-  --orange: #ff7900;
-  --white: #ffffff;
-  --background: #f5f6fa;
-  --text: #202638;
-  --muted: #697386;
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  background: var(--background);
-  color: var(--text);
-}
-
-button, input {
-  font: inherit;
-}
-
-button {
-  cursor: pointer;
-}
-
-header {
-  background: var(--navy);
-  color: white;
-  padding: 17px 5%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 15px;
-}
-
-.logo {
-  font-size: 24px;
-  font-weight: 900;
-  letter-spacing: -1px;
-  cursor: pointer;
-}
-
-.logo span {
-  color: var(--orange);
-}
-
-.cart-button {
-  background: var(--orange);
-  color: white;
-  border: none;
-  padding: 12px 15px;
-  border-radius: 8px;
-  font-weight: bold;
-}
-
-.search-wrap {
-  padding: 20px 5%;
-  background: white;
-}
-
-.search-wrap input {
-  width: 100%;
-  max-width: 700px;
-  display: block;
-  margin: auto;
-  padding: 14px;
-  border: 1px solid #dce0e8;
-  border-radius: 9px;
-  outline-color: var(--orange);
-}
-
-.hero {
-  margin: 22px 5%;
-  padding: 35px 25px;
-  border-radius: 14px;
-  background: linear-gradient(120deg, #101c3a, #293f70);
-  color: white;
-}
-
-.hero h1 {
-  font-size: clamp(30px, 6vw, 46px);
-  line-height: 1.15;
-  margin-bottom: 12px;
-}
-
-.hero p {
-  line-height: 1.7;
-  margin-bottom: 20px;
-  max-width: 470px;
-  color: #edf0f8;
-}
-
-.primary-button {
-  border: none;
-  border-radius: 8px;
-  background: var(--orange);
-  color: white;
-  padding: 13px 18px;
-  font-weight: bold;
-}
-
-.section-heading {
-  margin: 28px 5% 18px;
-  font-size: 24px;
-  color: var(--navy);
-}
-
-.products {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 13px;
-  margin: 0 5% 40px;
-}
-
-.product-card {
-  background: white;
-  border-radius: 11px;
-  overflow: hidden;
-  border: 1px solid #eceef3;
-  transition: transform .2s;
-}
-
-.product-card:active {
-  transform: scale(.98);
-}
-
-.product-card img {
-  display: block;
-  width: 100%;
-  height: 155px;
-  object-fit: contain;
-  background: #fff;
-  padding: 8px;
-  cursor: pointer;
-}
-
-.product-info {
-  padding: 12px;
-}
-
-.product-name {
-  font-size: 15px;
-  line-height: 1.4;
-  margin-bottom: 8px;
-}
-
-.product-price {
-  color: var(--orange);
-  font-weight: 800;
-  font-size: 19px;
-  margin-bottom: 12px;
-}
-
-.view-button {
-  width: 100%;
-  background: var(--navy);
-  color: white;
-  border: none;
-  border-radius: 7px;
-  padding: 11px 5px;
-  font-weight: bold;
-}
-
-.page {
-  display: none;
-}
-
-.page.active {
-  display: block;
-}
-
-.details-layout {
-  background: white;
-  margin: 20px 5% 40px;
-  padding: 20px;
-  border-radius: 13px;
-}
-
-.back-button {
-  background: #edf0f6;
-  color: var(--navy);
-  border: none;
-  padding: 11px 15px;
-  border-radius: 7px;
-  margin-bottom: 20px;
-  font-weight: bold;
-}
-
-.details-image {
-  width: 100%;
-  height: 280px;
-  object-fit: contain;
-  background: white;
-  margin-bottom: 22px;
-}
-
-.details-name {
-  font-size: 27px;
-  line-height: 1.3;
-  margin-bottom: 12px;
-}
-
-.details-price {
-  color: var(--orange);
-  font-size: 27px;
-  font-weight: 900;
-  margin-bottom: 20px;
-}
-
-.about-title {
-  color: var(--navy);
-  font-size: 19px;
-  margin-bottom: 9px;
-}
-
-.details-description {
-  color: #4f596b;
-  line-height: 1.8;
-  margin-bottom: 24px;
-}
-
-.add-button {
-  width: 100%;
-  background: var(--orange);
-  color: white;
-  border: none;
-  border-radius: 8px;
-  padding: 15px;
-  font-weight: bold;
-  font-size: 16px;
-}
-
-.cart-page {
-  margin: 20px 5% 40px;
-  background: white;
-  padding: 20px;
-  border-radius: 12px;
-}
-
-.cart-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 15px 0;
-  border-bottom: 1px solid #eceef3;
-}
-
-.cart-item img {
-  width: 65px;
-  height: 65px;
-  object-fit: contain;
-}
-
-.cart-item-info {
-  flex: 1;
-}
-
-.quantity-controls {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  margin-top: 8px;
-}
-
-.quantity-controls button {
-  border: none;
-  background: #edf0f6;
-  border-radius: 5px;
-  padding: 5px 10px;
-}
-
-.remove-button {
-  color: #c33232;
-  border: none;
-  background: none;
-  margin-top: 5px;
-}
-
-.cart-total {
-  font-size: 23px;
-  font-weight: bold;
-  margin: 22px 0;
-}
-
-.empty-message {
-  padding: 25px 0;
-  color: var(--muted);
-  line-height: 1.7;
-}
-
-footer {
-  background: var(--navy);
-  color: white;
-  text-align: center;
-  padding: 27px 15px;
-  line-height: 1.9;
-}
-
-footer span {
-  color: var(--orange);
-}
-
-@media (min-width: 700px) {
-  .products {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 18px;
-  }
-
-  .product-card img {
-    height: 210px;
-  }
-
-  .details-layout {
-    max-width: 950px;
-    margin: 25px auto 45px;
-    padding: 30px;
-  }
-
-  .details-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 35px;
-    align-items: start;
-  }
-
-  .details-image {
-    height: 380px;
-  }
-
-  .details-name {
-    margin-top: 15px;
-  }
-
-  .cart-page {
-    max-width: 850px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DAILYPICKZ – Curated Daily Essentials</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 </head>
-
 <body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-text">DAILYPICKZ</span>
+      </a>
+      <nav class="nav">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="#products" class="nav-link">Products</a>
+        <a href="cart.html" class="nav-link cart-link">
+          Cart
+          <span id="cart-count" class="cart-badge">0</span>
+        </a>
+      </nav>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
 
-<header>
-  <div class="logo" onclick="showHome()">
-    DAILY<span>PICKZ</span>
+  <!-- Mobile Nav -->
+  <div class="mobile-nav" id="mobile-nav">
+    <a href="index.html">Home</a>
+    <a href="#products">Products</a>
+    <a href="cart.html">Cart (<span id="mobile-cart-count">0</span>)</a>
   </div>
 
-  <button class="cart-button" onclick="showCart()">
-    🛒 Cart (<span id="cart-count">0</span>)
-  </button>
-</header>
-
-<div class="search-wrap" id="search-area">
-  <input
-    id="search"
-    type="search"
-    placeholder="Search products by name..."
-    oninput="filterProducts()"
-  >
-</div>
-
-<main id="home-page" class="page active">
-
+  <!-- Hero -->
   <section class="hero">
-    <h1>Find What You Need.<br>Shop With Ease.</h1>
-    <p>
-      Explore our products, discover the details,
-      and find the right item for you.
-    </p>
-    <button class="primary-button" onclick="scrollToProducts()">
-      Explore Products →
-    </button>
+    <div class="container hero-content">
+      <h1>Your Daily Picks,<br>Delivered Fresh</h1>
+      <p>Carefully selected essentials for modern living. Quality products, fair prices, fast delivery.</p>
+      <a href="#products" class="btn btn-primary">Shop Now</a>
+    </div>
   </section>
 
-  <h2 class="section-heading" id="products-heading">
-    Our Products
-  </h2>
-
-  <section class="products" id="product-list"></section>
-
-</main>
-
-<main id="details-page" class="page">
-  <section class="details-layout">
-    <button class="back-button" onclick="showHome()">
-      ← Back to Shopping
-    </button>
-
-    <div class="details-content">
-      <img id="details-image" class="details-image" src="" alt="">
-
-      <div>
-        <h1 id="details-name" class="details-name"></h1>
-        <p id="details-price" class="details-price"></p>
-
-        <h2 class="about-title">About this product</h2>
-        <p id="details-description" class="details-description"></p>
-
-        <button
-          id="details-add-button"
-          class="add-button"
-          onclick="addDetailsToCart()">
-          Add to Cart
-        </button>
+  <!-- Products -->
+  <section class="products-section" id="products">
+    <div class="container">
+      <div class="section-header">
+        <h2>Featured Products</h2>
+        <p>Hand-picked items updated regularly</p>
+      </div>
+      <div class="products-grid" id="products-grid">
+        <!-- Products injected by JS -->
       </div>
     </div>
   </section>
-</main>
 
-<main id="cart-page" class="page">
-  <section class="cart-page">
-    <button class="back-button" onclick="showHome()">
-      ← Continue Shopping
-    </button>
-
-    <h1>My Shopping Cart</h1>
-
-    <div id="cart-items"></div>
-
-    <div id="cart-summary"></div>
-  </section>
-</main>
-
-<footer>
-  <h2>DAILY<span>PICKZ</span></h2>
-  <p>Your daily destination for great products.</p>
-  <p>© 2026 DAILYPICKZ. All rights reserved.</p>
-</footer>
-
-<script>
-/*
-  SAMPLE PRODUCTS
-
-  Replace these example products with your real products.
-  Use a direct image URL for each image.
-*/
-
-const products = [
-  {
-    id: 1,
-    name: "Smartphone",
-    price: 185000,
-    image: "https://placehold.co/600x500/ffffff/101c3a?text=Smartphone",
-    description: "A smartphone for everyday communication, browsing, entertainment and staying connected."
-  },
-  {
-    id: 2,
-    name: "Wireless Earbuds",
-    price: 12000,
-    image: "https://placehold.co/600x500/ffffff/101c3a?text=Wireless+Earbuds",
-    description: "Compact wireless earbuds for listening to music, watching videos and making calls."
-  },
-  {
-    id: 3,
-    name: "Smart Watch",
-    price: 18000,
-    image: "https://placehold.co/600x500/ffffff/101c3a?text=Smart+Watch",
-    description: "A modern wristwatch designed for everyday wear and compatible features depending on the model."
-  },
-  {
-    id: 4,
-    name: "School Backpack",
-    price: 15000,
-    image: "https://placehold.co/600x500/ffffff/101c3a?text=Backpack",
-    description: "A practical backpack for carrying books, personal belongings and everyday essentials."
-  },
-  {
-    id: 5,
-    name: "Portable Speaker",
-    price: 22000,
-    image: "https://placehold.co/600x500/ffffff/101c3a?text=Speaker",
-    description: "A portable speaker for enjoying music and audio at home or on the go."
-  },
-  {
-    id: 6,
-    name: "Sneakers",
-    price: 25000,
-    image: "https://placehold.co/600x500/ffffff/101c3a?text=Sneakers",
-    description: "Casual sneakers suitable for everyday outings. Check the available sizes before ordering."
-  },
-  {
-    id: 7,
-    name: "Travel Bag",
-    price: 20000,
-    image: "https://placehold.co/600x500/ffffff/101c3a?text=Travel+Bag",
-    description: "A travel bag for organising clothing and personal items during trips."
-  },
-  {
-    id: 8,
-    name: "Android Tablet",
-    price: 110000,
-    image: "https://placehold.co/600x500/ffffff/101c3a?text=Android+Tablet",
-    description: "A tablet for reading, online learning, browsing and watching videos. Confirm the exact model and specifications before purchase."
-  }
-];
-
-let cart = [];
-let selectedProductId = null;
-
-function formatPrice(amount) {
-  return "₦" + amount.toLocaleString("en-NG");
-}
-
-function displayProducts(items) {
-  const list = document.getElementById("product-list");
-
-  if (items.length === 0) {
-    list.innerHTML = '<p class="empty-message">No products found. Try another search.</p>';
-    return;
-  }
-
-  list.innerHTML = items.map(product => `
-    <article class="product-card">
-      <img
-        src="${product.image}"
-        alt="${product.name}"
-        loading="lazy"
-        onclick="showDetails(${product.id})"
-      >
-
-      <div class="product-info">
-        <h3 class="product-name">${product.name}</h3>
-        <p class="product-price">${formatPrice(product.price)}</p>
-        <button class="view-button" onclick="showDetails(${product.id})">
-          View Product
-        </button>
+  <!-- Features -->
+  <section class="features">
+    <div class="container features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🚚</div>
+        <h3>Fast Delivery</h3>
+        <p>Quick and reliable shipping to your doorstep</p>
       </div>
-    </article>
-  `).join("");
-}
+      <div class="feature-card">
+        <div class="feature-icon">✅</div>
+        <h3>Quality Assured</h3>
+        <p>Every product is carefully selected and verified</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💬</div>
+        <h3>Easy Support</h3>
+        <p>We’re here to help with any questions</p>
+      </div>
+    </div>
+  </section>
 
-function filterProducts() {
-  const query = document.getElementById("search").value.toLowerCase().trim();
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="logo-text">DAILYPICKZ</span>
+        <p>Curated daily essentials for modern living.</p>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="#products">Products</a>
+        <a href="cart.html">Cart</a>
+      </div>
+      <p class="copyright">© 2026 DAILYPICKZ. All rights reserved.</p>
+    </div>
+  </footer>
 
-  const filtered = products.filter(product =>
-    product.name.toLowerCase().includes(query)
-  );
-
-  displayProducts(filtered);
-}
-
-function showPage(pageId) {
-  document.querySelectorAll(".page").forEach(page => {
-    page.classList.remove("active");
-  });
-
-  document.getElementById(pageId).classList.add("active");
-
-  document.getElementById("search-area").style.display =
-    pageId === "home-page" ? "block" : "none";
-
-  window.scrollTo({ top: 0, behavior: "smooth" });
-}
-
-function showHome() {
-  showPage("home-page");
-  document.getElementById("search").value = "";
-  displayProducts(products);
-}
-
-function scrollToProducts() {
-  document.getElementById("products-heading").scrollIntoView({
-    behavior: "smooth"
-  });
-}
-
-function showDetails(id) {
-  const product = products.find(item => item.id === id);
-  if (!product) return;
-
-  selectedProductId = id;
-
-  document.getElementById("details-image").src = product.image;
-  document.getElementById("details-image").alt = product.name;
-  document.getElementById("details-name").textContent = product.name;
-  document.getElementById("details-price").textContent = formatPrice(product.price);
-  document.getElementById("details-description").textContent = product.description;
-
-  showPage("details-page");
-}
-
-function addToCart(id) {
-  const existing = cart.find(item => item.id === id);
-
-  if (existing) {
-    existing.quantity += 1;
-  } else {
-    const product = products.find(item => item.id === id);
-    if (!product) return;
-    cart.push({ ...product, quantity: 1 });
-  }
-
-  updateCartCount();
-}
-
-function addDetailsToCart() {
-  addToCart(selectedProductId);
-  alert("Product added to your cart.");
-}
-
-function updateCartCount() {
-  const count = cart.reduce((total, item) => total + item.quantity, 0);
-  document.getElementById("cart-count").textContent = count;
-}
-
-function changeQuantity(id, amount) {
-  const item = cart.find(product => product.id === id);
-  if (!item) return;
-
-  item.quantity += amount;
-
-  if (item.quantity <= 0) {
-    cart = cart.filter(product => product.id !== id);
-  }
-
-  updateCartCount();
-  renderCart();
-}
-
-function removeFromCart(id) {
-  cart = cart.filter(product => product.id !== id);
-  updateCartCount();
-  renderCart();
-}
-
-function showCart() {
-  showPage("cart-page");
-  renderCart();
-}
-
-function renderCart() {
-  const itemsArea = document.getElementById("cart-items");
-  const summary = document.getElementById("cart-summary");
-
-  if (cart.length === 0) {
-    itemsArea.innerHTML = '<p class="empty-message">Your cart is empty. Explore our products to get started.</p>';
-    summary.innerHTML = "";
-    return;
-  }
-
-  itemsArea.innerHTML = cart.map(item => `
-    <div class="cart-item">
-      <img src="${item.image}" alt="${item.name}">
-
-      <div class="
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
