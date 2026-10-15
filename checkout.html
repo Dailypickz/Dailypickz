@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout – DAILYPICKZ</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-text">DAILYPICKZ</span>
+      </a>
+      <nav class="nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="index.html#products" class="nav-link">Products</a>
+        <a href="cart.html" class="nav-link cart-link">
+          Cart
+          <span id="cart-count" class="cart-badge">0</span>
+        </a>
+      </nav>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-nav" id="mobile-nav">
+    <a href="index.html">Home</a>
+    <a href="index.html#products">Products</a>
+    <a href="cart.html">Cart (<span id="mobile-cart-count">0</span>)</a>
+  </div>
+
+  <main class="checkout-page">
+    <div class="container">
+      <h1 class="page-title">Checkout</h1>
+      <div class="checkout-grid">
+        <form id="checkout-form" class="checkout-form">
+          <h2>Delivery Details</h2>
+          <div class="form-group">
+            <label for="fullName">Full Name *</label>
+            <input type="text" id="fullName" name="fullName" required placeholder="e.g. Ada Okoro" />
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number *</label>
+            <input type="tel" id="phone" name="phone" required placeholder="e.g. 08012345678" />
+          </div>
+          <div class="form-group">
+            <label for="address">Delivery Address *</label>
+            <textarea id="address" name="address" rows="3" required placeholder="Street, area, city, state"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="notes">Order Notes (optional)</label>
+            <textarea id="notes" name="notes" rows="2" placeholder="Any special instructions?"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">Place Order</button>
+        </form>
+
+        <aside class="order-summary">
+          <h2>Order Summary</h2>
+          <div id="summary-items"></div>
+          <div class="summary-total">
+            <span>Total</span>
+            <strong id="summary-total">₦0</strong>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="logo-text">DAILYPICKZ</span>
+        <p>Curated daily essentials for modern living.</p>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#products">Products</a>
+        <a href="cart.html">Cart</a>
+      </div>
+      <p class="copyright">© 2026 DAILYPICKZ. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/checkout.js"></script>
+</body>
+</html>
