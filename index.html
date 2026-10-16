@@ -10,23 +10,43 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 </head>
 <body>
+
+  <!-- Top Contact Bar -->
+  <div class="contact-bar">
+    <span>Call / WhatsApp: </span>
+    <a href="tel:07070226669">07070226669</a> |
+    <a href="https://wa.me/2347070226669" target="_blank">WhatsApp</a> |
+    <a href="mailto:freefire25136197@gmail.com">freefire25136197@gmail.com</a>
+  </div>
+
   <!-- Header -->
   <header class="header">
     <div class="container header-inner">
       <a href="index.html" class="logo">
+        <!-- Replace logo.png with your real logo later -->
+        <img src="logo.png" alt="DAILYPICKZ" onerror="this.style.display='none'">
         <span class="logo-text">DAILYPICKZ</span>
       </a>
-      <nav class="nav">
-        <a href="index.html" class="nav-link active">Home</a>
-        <a href="#products" class="nav-link">Products</a>
-        <a href="cart.html" class="nav-link cart-link">
-          Cart
-          <span id="cart-count" class="cart-badge">0</span>
-        </a>
-      </nav>
-      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
+
+      <div class="header-right">
+        <div class="search-box">
+          <input type="text" id="search-input" placeholder="Search products..." />
+          <button onclick="searchProducts()">🔍</button>
+        </div>
+
+        <nav class="nav">
+          <a href="index.html" class="nav-link active">Home</a>
+          <a href="#products" class="nav-link">Products</a>
+          <a href="about.html" class="nav-link">About</a>
+          <a href="cart.html" class="nav-link cart-link">
+            Cart <span id="cart-count" class="cart-badge">0</span>
+          </a>
+        </nav>
+
+        <button class="menu-toggle" id="menu-toggle" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
   </header>
 
@@ -34,14 +54,15 @@
   <div class="mobile-nav" id="mobile-nav">
     <a href="index.html">Home</a>
     <a href="#products">Products</a>
+    <a href="about.html">About</a>
     <a href="cart.html">Cart (<span id="mobile-cart-count">0</span>)</a>
   </div>
 
   <!-- Hero -->
   <section class="hero">
-    <div class="container hero-content">
+    <div class="container">
       <h1>Your Daily Picks,<br>Delivered Fresh</h1>
-      <p>Carefully selected essentials for modern living. Quality products, fair prices, fast delivery.</p>
+      <p>Carefully selected essentials for modern living. Quality products, fair prices, fast delivery across Nigeria.</p>
       <a href="#products" class="btn btn-primary">Shop Now</a>
     </div>
   </section>
@@ -54,7 +75,7 @@
         <p>Hand-picked items updated regularly</p>
       </div>
       <div class="products-grid" id="products-grid">
-        <!-- Products injected by JS -->
+        <!-- Products loaded by JavaScript -->
       </div>
     </div>
   </section>
@@ -65,7 +86,7 @@
       <div class="feature-card">
         <div class="feature-icon">🚚</div>
         <h3>Fast Delivery</h3>
-        <p>Quick and reliable shipping to your doorstep</p>
+        <p>Quick delivery within Maiduguri and across Nigeria</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">✅</div>
@@ -75,7 +96,7 @@
       <div class="feature-card">
         <div class="feature-icon">💬</div>
         <h3>Easy Support</h3>
-        <p>We’re here to help with any questions</p>
+        <p>Call or WhatsApp us anytime on 07070226669</p>
       </div>
     </div>
   </section>
@@ -89,12 +110,15 @@
       </div>
       <div class="footer-links">
         <a href="index.html">Home</a>
-        <a href="#products">Products</a>
+        <a href="about.html">About</a>
         <a href="cart.html">Cart</a>
       </div>
-      <p class="copyright">© 2026 DAILYPICKZ. All rights reserved.</p>
+      <p class="copyright">© 2026 DAILYPICKZ · Maiduguri, Borno State</p>
     </div>
   </footer>
+
+  <!-- Toast notification -->
+  <div id="toast" class="toast"></div>
 
   <script src="js/products.js"></script>
   <script src="js/cart.js"></script>
