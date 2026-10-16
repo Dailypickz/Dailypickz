@@ -40,12 +40,14 @@ document.addEventListener("DOMContentLoaded", () => {
   `;
 
   const qtyValue = document.getElementById("qty-value");
+
   document.getElementById("qty-minus").addEventListener("click", () => {
     if (quantity > 1) {
       quantity--;
       qtyValue.textContent = quantity;
     }
   });
+
   document.getElementById("qty-plus").addEventListener("click", () => {
     quantity++;
     qtyValue.textContent = quantity;
@@ -53,6 +55,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.getElementById("add-to-cart-btn").addEventListener("click", () => {
     addToCart(product.id, quantity);
+    showToast("Added to cart ✓");
+    playAddSound();
+
     const btn = document.getElementById("add-to-cart-btn");
     btn.textContent = "Added to Cart ✓";
     btn.disabled = true;
