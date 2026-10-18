@@ -60,4 +60,66 @@
           <h2>Delivery Details</h2>
           <div class="form-group">
             <label for="fullName">Full Name *</label>
-            <input type="text" id="fullName" name="fullName" required placeholder="e
+            <input type="text" id="fullName" name="fullName" required placeholder="e.g. Ada Okoro" />
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number *</label>
+            <input type="tel" id="phone" name="phone" required placeholder="e.g. 08012345678" />
+          </div>
+          <div class="form-group">
+            <label for="address">Delivery Address *</label>
+            <textarea id="address" name="address" rows="3" required placeholder="Street, area, city, state"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="notes">Order Notes (optional)</label>
+            <textarea id="notes" name="notes" rows="2" placeholder="Any special instructions?"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">Place Order</button>
+        </form>
+
+        <aside class="order-summary">
+          <h2>Order Summary</h2>
+          <div id="summary-items"></div>
+          <div class="summary-total">
+            <span>Total</span>
+            <strong id="summary-total">₦0</strong>
+          </div>
+
+          <!-- Bank Transfer Details -->
+          <div class="bank-details">
+            <h3>Payment Method: Bank Transfer</h3>
+            <p><strong>Bank:</strong> Moniepoint MFB</p>
+            <p><strong>Account Name:</strong> Dailypickz</p>
+            <p><strong>Account Number:</strong> 6712779888</p>
+            <p style="margin-top:10px;font-size:0.85rem;color:#555;">
+              After transferring, please keep your receipt. We will confirm your order once payment is received.
+            </p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="logo-text">DAILYPICKZ</span>
+        <p>Curated daily essentials for modern living.</p>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="cart.html">Cart</a>
+      </div>
+      <p class="copyright">© 2026 DAILYPICKZ · Maiduguri, Borno State</p>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/checkout.js"></script>
+</body>
+</html>
