@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register – DAILYPICKZ</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/appwrite@16.0.0"></script>
+</head>
+<body>
+
+  <div class="contact-bar">
+    <span>Call / WhatsApp: </span>
+    <a href="tel:07070226669">07070226669</a> |
+    <a href="https://wa.me/2347070226669" target="_blank">WhatsApp</a> |
+    <a href="mailto:freefire25136197@gmail.com">freefire25136197@gmail.com</a>
+  </div>
+
+  <header class="header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <img src="logo.png" alt="DAILYPICKZ" onerror="this.style.display='none'">
+        <span class="logo-text">DAILYPICKZ</span>
+      </a>
+      <div class="header-right">
+        <nav class="nav">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="login.html" class="nav-link">Login</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="about-page">
+    <div class="container">
+      <div class="about-card" style="max-width:420px;">
+        <h1>Create Account</h1>
+        <p style="margin-bottom:24px;color:#6B7280;">Register to track your orders</p>
+
+        <form id="register-form">
+          <div class="form-group">
+            <label>Full Name *</label>
+            <input type="text" id="name" required placeholder="Your full name" />
+          </div>
+          <div class="form-group">
+            <label>Email *</label>
+            <input type="email" id="email" required placeholder="you@example.com" />
+          </div>
+          <div class="form-group">
+            <label>Password *</label>
+            <input type="password" id="password" required placeholder="At least 8 characters" minlength="8" />
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">Register</button>
+        </form>
+
+        <p style="margin-top:20px;text-align:center;font-size:0.9rem;">
+          Already have an account? <a href="login.html" style="color:#FF6B35;">Login</a>
+        </p>
+
+        <p id="message" style="margin-top:16px;text-align:center;color:#EF4444;"></p>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/appwrite.js"></script>
+  <script>
+    document.getElementById("register-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
+      const message = document.getElementById("message");
+
+      try {
+        await account.create(ID.unique(), email, password, name);
+        message.style.color = "#10B981";
+        message.textContent = "Account created successfully! Redirecting to login...";
+        setTimeout(() => {
+          window.location.href = "login.html";
+        }, 1500);
+      } catch (error) {
+        message.style.color = "#EF4444";
+        message.textContent = error.message || "Registration failed. Please try again.";
+      }
+    });
+  </script>
+</body>
+</html>
