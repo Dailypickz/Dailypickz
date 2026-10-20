@@ -1,3 +1,39 @@
+// Check if user is logged in and update header
+async function updateAuthUI() {
+  const user = await getCurrentUser();
+  const loginLink = document.getElementById("login-link");
+  const registerLink = document.getElementById("register-link");
+  const userName = document.getElementById("user-name");
+  const logoutLink = document.getElementById("logout-link");
+
+  if (user) {
+    // User is logged in
+    if (loginLink) loginLink.style.display = "none";
+    if (registerLink) registerLink.style.display = "none";
+    if (userName) {
+      userName.style.display = "inline";
+      userName.textContent = user.name || user.email;
+    }
+    if (logoutLink) {
+      logoutLink.style.display = "inline";
+      logoutLink.onclick = async (e) => {
+        e.preventDefault();
+        try {
+          await account.deleteSession("current");
+          window.location.reload();
+        } catch (err) {
+          console.error(err);
+        }
+      };
+    }
+  } else {
+    // User is not logged in
+    if (loginLink) loginLink.style.display = "inline";
+    if (registerLink) registerLink.style.display = "inline";
+    if (userName) userName.style.display = "none";
+    if (logoutLink) logoutLink.style.display = "none";
+  }
+}
 // Shared functionality for all pages
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -5,6 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupMobileMenu();
   renderProductsIfNeeded();
   setupSearch();
+  updateAuthUI();          // ← add this line
 });
 
 function setupMobileMenu() {
