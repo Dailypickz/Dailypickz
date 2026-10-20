@@ -35,13 +35,17 @@
         </div>
 
         <nav class="nav">
-          <a href="index.html" class="nav-link active">Home</a>
-          <a href="#products" class="nav-link">Products</a>
-          <a href="about.html" class="nav-link">About</a>
-          <a href="cart.html" class="nav-link cart-link">
-            Cart <span id="cart-count" class="cart-badge">0</span>
-          </a>
-        </nav>
+  <a href="index.html" class="nav-link active">Home</a>
+  <a href="#products" class="nav-link">Products</a>
+  <a href="about.html" class="nav-link">About</a>
+  <a href="cart.html" class="nav-link cart-link">
+    Cart <span id="cart-count" class="cart-badge">0</span>
+  </a>
+  <a href="login.html" class="nav-link" id="login-link">Login</a>
+  <a href="register.html" class="nav-link" id="register-link">Register</a>
+  <span id="user-name" style="display:none; color:#FF6B35; font-weight:500;"></span>
+  <a href="#" class="nav-link" id="logout-link" style="display:none;">Logout</a>
+</nav>
 
         <button class="menu-toggle" id="menu-toggle" aria-label="Menu">
           <span></span><span></span><span></span>
@@ -120,8 +124,10 @@
   <!-- Toast notification -->
   <div id="toast" class="toast"></div>
 
-  <script src="js/products.js"></script>
-  <script src="js/cart.js"></script>
-  <script src="js/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/appwrite@16.0.0"></script>
+<script src="js/appwrite.js"></script>
+<script src="js/products.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>
