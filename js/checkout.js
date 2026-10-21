@@ -1,7 +1,15 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   const cart = getCart();
   if (cart.length === 0) {
     window.location.href = "cart.html";
+    return;
+  }
+
+  // Check if user is logged in
+  const user = await getCurrentUser();
+  if (!user) {
+    alert("Please login first to place an order.");
+    window.location.href = "login.html";
     return;
   }
 
@@ -28,27 +36,57 @@ function renderSummary() {
   document.getElementById("summary-total").textContent = formatPrice(getCartTotal());
 }
 
-function handleSubmit(e) {
+async function handleSubmit(e) {
   e.preventDefault();
 
   const form = e.target;
-  const order = {
+  const user = await getCurrentUser();
+
+  if (!user) {
+    alert("Please login first.");
+    window.location.href = "login.html";
+    return;
+  }
+
+  const orderRef = "DPZ-" + Date.now().toString().slice(-6);
+
+  const orderData = {
+    userId: user.$id,
     fullName: form.fullName.value.trim(),
     phone: form.phone.value.trim(),
     address: form.address.value.trim(),
-    notes: form.notes.value.trim(),
-    items: getCart(),
+    notes: form.notes.value.trim() || "",
+    items: JSON.stringify(getCart()),
     total: getCartTotal(),
-    date: new Date().toISOString(),
-    ref: "DPZ-" + Date.now().toString().slice(-6)
+    status: "pending",
+    orderRef: orderRef,
+    createdAt: new Date().toISOString()
   };
 
-  // Save order temporarily so confirmation page can show it
-  sessionStorage.setItem("dailypickz_last_order", JSON.stringify(order));
+  try {
+    // Save order to Appwrite
+    await tablesDB.createRow(
+      APPWRITE_DATABASE_ID,
+      ORDERS_TABLE_ID,
+      ID.unique(),
+      orderData
+    );
 
-  // Clear the cart
-  clearCart();
+    // Save for confirmation page
+    sessionStorage.setItem("dailypickz_last_order", JSON.stringify({
+      ...orderData,
+      fullName: orderData.fullName,
+      phone: orderData.phone,
+      ref: orderRef
+    }));
 
-  // Go to confirmation
-  window.location.href = "confirmation.html";
+    // Clear cart
+    clearCart();
+
+    // Go to confirmation
+    window.location.href = "confirmation.html";
+  } catch (error) {
+    console.error(error);
+    alert("Failed to place order. Please try again.\n" + (error.message || ""));
+  }
 }
