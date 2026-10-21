@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     return;
   }
 
-  // Check if user is logged in
   const user = await getCurrentUser();
   if (!user) {
     alert("Please login first to place an order.");
@@ -64,29 +63,25 @@ async function handleSubmit(e) {
   };
 
   try {
-    // Save order to Appwrite
-    await tablesDB.createRow(
+    // Save order using Databases
+    await databases.createDocument(
       APPWRITE_DATABASE_ID,
       ORDERS_TABLE_ID,
-      ID.unique(),
+      Appwrite.ID.unique(),
       orderData
     );
 
     // Save for confirmation page
     sessionStorage.setItem("dailypickz_last_order", JSON.stringify({
-      ...orderData,
       fullName: orderData.fullName,
       phone: orderData.phone,
       ref: orderRef
     }));
 
-    // Clear cart
     clearCart();
-
-    // Go to confirmation
     window.location.href = "confirmation.html";
   } catch (error) {
     console.error(error);
-    alert("Failed to place order. Please try again.\n" + (error.message || ""));
+    alert("Failed to place order. Please try again.\n" + (error.message || error));
   }
 }
