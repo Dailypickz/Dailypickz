@@ -51,17 +51,16 @@ async function handleSubmit(e) {
   const orderRef = "DPZ-" + Date.now().toString().slice(-6);
 
   const orderData = {
-    userId: user.$id,
-    fullName: form.fullName.value.trim(),
-    phone: form.phone.value.trim(),
-    address: form.address.value.trim(),
-    notes: form.notes.value.trim() || "",
-    items: JSON.stringify(getCart()),
-    total: getCartTotal(),
-    status: "pending",
-    orderRef: orderRef,
-    createdAt: new Date().toISOString()
-  };
+  userId: user.$id,
+  fullName: form.fullName.value.trim(),
+  phone: form.phone.value.trim(),
+  address: form.address.value.trim(),
+  notes: form.notes.value.trim() || "",
+  items: JSON.stringify(getCart()),
+  total: getCartTotal(),
+  status: "pending",
+  orderRef: orderRef
+};
 
   try {
     // Save order using Databases
