@@ -1,3 +1,4 @@
+console.log("=== NEW CHECKOUT.JS LOADED ===");
 document.addEventListener("DOMContentLoaded", async () => {
   const cart = getCart();
   if (cart.length === 0) {
