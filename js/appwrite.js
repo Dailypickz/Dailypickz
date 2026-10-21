@@ -5,15 +5,12 @@ const APPWRITE_DATABASE_ID = "6ad4c888000462dc46a1";
 const PRODUCTS_TABLE_ID = "6ad4ca260038d702aef1";
 const ORDERS_TABLE_ID = "6ad7b5d6001adb026af7";
 
-// Load Appwrite Web SDK
-const { Client, Account, TablesDB, ID, Query } = Appwrite;
-
-const client = new Client()
+const client = new Appwrite.Client()
   .setEndpoint(APPWRITE_ENDPOINT)
   .setProject(APPWRITE_PROJECT_ID);
 
-const account = new Account(client);
-const tablesDB = new TablesDB(client);
+const account = new Appwrite.Account(client);
+const databases = new Appwrite.Databases(client);   // using Databases
 
 // Helper: Get current logged in user
 async function getCurrentUser() {
