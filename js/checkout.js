@@ -82,6 +82,6 @@ async function handleSubmit(e) {
     window.location.href = "confirmation.html";
   } catch (error) {
     console.error(error);
-    alert("Failed to place order. Please try again.\n" + (error.message || error));
+    alert("NEW CODE IS RUNNING - Error: " + (error.message || error));
   }
 }
