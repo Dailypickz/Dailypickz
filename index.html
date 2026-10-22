@@ -11,39 +11,79 @@
 </head>
 <body>
 
-  <!-- New Clean Header -->
-<header class="header-new">
-  <div class="container">
-    <!-- Logo -->
-    <div style="text-align:center; margin-bottom:12px;">
-      <a href="index.html" class="logo-text" style="font-size:1.7rem;">
-        DAILY<span style="color:#FF6B35;">PICKZ</span>
-      </a>
-    </div>
+  /* ===== Strong New Header ===== */
+.header-new {
+  background: #0B1D36 !important;
+  color: white !important;
+  padding: 18px 0 14px;
+  text-align: center;
+}
 
-    <!-- Search Bar -->
-    <div class="header-search">
-      <input type="text" id="search-input" placeholder="Search products..." />
-      <button onclick="searchProducts()">Search</button>
-    </div>
+.header-new .logo-text {
+  font-size: 1.8rem !important;
+  font-weight: 700;
+  color: white !important;
+  text-decoration: none;
+}
 
-    <!-- Navigation -->
-    <nav class="header-nav" style="margin-top:12px;">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="about.html">Contact</a>
-      <a href="login.html" id="login-link">Login</a>
-      <a href="register.html" id="register-link">Register</a>
-      <a href="cart.html">Cart (<span id="cart-count">0</span>)</a>
-    </nav>
+.header-new .logo-text span {
+  color: #FF6B35 !important;
+}
 
-    <!-- User info (separate and clean) -->
-    <div id="user-area" style="text-align:center; margin-top:10px; font-size:0.9rem;">
-      <span id="user-name" style="display:none; color:#FF6B35; font-weight:600;"></span>
-      <a href="#" id="logout-link" style="display:none; margin-left:12px; color:#FF6B35;">Logout</a>
-    </div>
-  </div>
-</header>
+.header-search {
+  display: flex;
+  max-width: 480px;
+  margin: 14px auto;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.header-search input {
+  flex: 1;
+  padding: 13px 16px;
+  border: none;
+  outline: none;
+  font-size: 0.95rem;
+}
+
+.header-search button {
+  background: #FF6B35;
+  color: white;
+  border: none;
+  padding: 0 24px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.header-nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 10px;
+  font-size: 0.95rem;
+}
+
+.header-nav a {
+  color: white !important;
+  text-decoration: none;
+  opacity: 0.9;
+}
+
+.header-nav a:hover {
+  color: #FF6B35 !important;
+}
+
+#user-area {
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
+
+#user-name {
+  color: #FF6B35 !important;
+  font-weight: 600;
+}
 
   <!-- Mobile Nav -->
   <div class="mobile-nav" id="mobile-nav">
