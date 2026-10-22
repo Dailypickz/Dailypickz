@@ -11,48 +11,32 @@
 </head>
 <body>
 
-  <!-- Top Contact Bar -->
-  <div class="contact-bar">
-    <span>Call / WhatsApp: </span>
-    <a href="tel:07070226669">07070226669</a> |
-    <a href="https://wa.me/2347070226669" target="_blank">WhatsApp</a> |
-    <a href="mailto:freefire25136197@gmail.com">freefire25136197@gmail.com</a>
-  </div>
-
-  <!-- Header -->
-  <header class="header">
-    <div class="container header-inner">
-      <a href="index.html" class="logo">
-        <!-- Replace logo.png with your real logo later -->
-        <img src="logo.png" alt="DAILYPICKZ" onerror="this.style.display='none'">
-        <span class="logo-text">DAILYPICKZ</span>
+  <!-- New Header -->
+<header class="header-new">
+  <div class="container">
+    <div style="text-align:center;">
+      <a href="index.html" class="logo-text">
+        DAILY<span>PICKZ</span>
       </a>
-
-      <div class="header-right">
-        <div class="search-box">
-          <input type="text" id="search-input" placeholder="Search products..." />
-          <button onclick="searchProducts()">🔍</button>
-        </div>
-
-        <nav class="nav">
-  <a href="index.html" class="nav-link active">Home</a>
-  <a href="#products" class="nav-link">Products</a>
-  <a href="about.html" class="nav-link">About</a>
-  <a href="cart.html" class="nav-link cart-link">
-    Cart <span id="cart-count" class="cart-badge">0</span>
-  </a>
-  <a href="login.html" class="nav-link" id="login-link">Login</a>
-  <a href="register.html" class="nav-link" id="register-link">Register</a>
-  <span id="user-name" style="display:none; color:#FF6B35; font-weight:500;"></span>
-  <a href="#" class="nav-link" id="logout-link" style="display:none;">Logout</a>
-</nav>
-
-        <button class="menu-toggle" id="menu-toggle" aria-label="Menu">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
     </div>
-  </header>
+
+    <div class="header-search">
+      <input type="text" id="search-input" placeholder="Search products..." />
+      <button onclick="searchProducts()">Search</button>
+    </div>
+
+    <nav class="header-nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="about.html">Contact</a>
+      <a href="login.html" id="login-link">Login</a>
+      <a href="register.html" id="register-link">Register</a>
+      <a href="cart.html">🛒 Cart <span id="cart-count">0</span></a>
+      <span id="user-name" style="display:none; color:#FF6B35;"></span>
+      <a href="#" id="logout-link" style="display:none;">Logout</a>
+    </nav>
+  </div>
+</header>
 
   <!-- Mobile Nav -->
   <div class="mobile-nav" id="mobile-nav">
