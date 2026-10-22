@@ -82,6 +82,6 @@ async function handleSubmit(e) {
     window.location.href = "confirmation.html";
   } catch (error) {
     console.error(error);
-    alert("NEW CODE IS RUNNING - Error: " + (error.message || error));
+    alert("VERSION 3 - Error: " + (error.message || error));
   }
 }
