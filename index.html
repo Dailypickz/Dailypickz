@@ -1,164 +1,237 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DAILYPICKZ – Curated Daily Essentials</title>
-  <link rel="stylesheet" href="css/styles.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description"
+        content="DAILYPICKZ — Shop electronics, fashion, accessories, home products and more.">
+
+  <title>DAILYPICKZ | Shop Smart</title>
+
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-  /* ===== Strong New Header ===== */
-.header-new {
-  background: #0B1D36 !important;
-  color: white !important;
-  padding: 18px 0 14px;
-  text-align: center;
-}
-
-.header-new .logo-text {
-  font-size: 1.8rem !important;
-  font-weight: 700;
-  color: white !important;
-  text-decoration: none;
-}
-
-.header-new .logo-text span {
-  color: #FF6B35 !important;
-}
-
-.header-search {
-  display: flex;
-  max-width: 480px;
-  margin: 14px auto;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-}
-
-.header-search input {
-  flex: 1;
-  padding: 13px 16px;
-  border: none;
-  outline: none;
-  font-size: 0.95rem;
-}
-
-.header-search button {
-  background: #FF6B35;
-  color: white;
-  border: none;
-  padding: 0 24px;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.header-nav {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 18px;
-  margin-top: 10px;
-  font-size: 0.95rem;
-}
-
-.header-nav a {
-  color: white !important;
-  text-decoration: none;
-  opacity: 0.9;
-}
-
-.header-nav a:hover {
-  color: #FF6B35 !important;
-}
-
-#user-area {
-  margin-top: 10px;
-  font-size: 0.9rem;
-}
-
-#user-name {
-  color: #FF6B35 !important;
-  font-weight: 600;
-}
-
-  <!-- Mobile Nav -->
-  <div class="mobile-nav" id="mobile-nav">
-    <a href="index.html">Home</a>
-    <a href="#products">Products</a>
-    <a href="about.html">About</a>
-    <a href="cart.html">Cart (<span id="mobile-cart-count">0</span>)</a>
+  <!-- ANNOUNCEMENT BAR -->
+  <div class="announcement">
+    WELCOME TO DAILYPICKZ — SHOP SMART, SHOP BETTER.
   </div>
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="container">
-      <h1>Your Daily Picks,<br>Delivered Fresh</h1>
-      <p>Carefully selected essentials for modern living. Quality products, fair prices, fast delivery across Nigeria.</p>
-      <a href="#products" class="btn btn-primary">Shop Now</a>
-    </div>
-  </section>
+  <!-- HEADER -->
+  <header class="header">
+    <a href="#home" class="logo">
+      DAILY<span>PICKZ</span>
+    </a>
 
-  <!-- Products -->
-  <section class="products-section" id="products">
-    <div class="container">
-      <div class="section-header">
-        <h2>Featured Products</h2>
-        <p>Hand-picked items updated regularly</p>
-      </div>
-      <div class="products-grid" id="products-grid">
-        <!-- Products loaded by JavaScript -->
-      </div>
-    </div>
-  </section>
+    <form class="search-box" id="searchForm">
+      <input
+        type="search"
+        id="searchInput"
+        placeholder="Search any product..."
+        aria-label="Search products"
+      >
+      <button type="submit" aria-label="Search">⌕</button>
+    </form>
 
-  <!-- Features -->
-  <section class="features">
-    <div class="container features-grid">
-      <div class="feature-card">
-        <div class="feature-icon">🚚</div>
-        <h3>Fast Delivery</h3>
-        <p>Quick delivery within Maiduguri and across Nigeria</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">✅</div>
-        <h3>Quality Assured</h3>
-        <p>Every product is carefully selected and verified</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">💬</div>
-        <h3>Easy Support</h3>
-        <p>Call or WhatsApp us anytime on 07070226669</p>
-      </div>
-    </div>
-  </section>
+    <div class="account-area">
+      <span id="welcomeUser" class="welcome-user"></span>
 
-  <!-- Footer -->
+      <button id="loginBtn" class="account-btn">Login</button>
+      <button id="registerBtn" class="register-btn">Register</button>
+      <button id="logoutBtn" class="account-btn hidden">Logout</button>
+    </div>
+  </header>
+
+  <!-- NAVIGATION -->
+  <nav class="navigation">
+    <a href="#home">Home</a>
+    <a href="#products">Shop Products</a>
+    <a href="#about">About Us</a>
+    <a href="#contact">Contact Us</a>
+  </nav>
+
+  <!-- MAIN -->
+  <main>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <p class="eyebrow">YOUR EVERYDAY SHOPPING DESTINATION</p>
+
+        <h1>Everything You Need.<br>
+          <span>One Smart Place.</span>
+        </h1>
+
+        <p class="hero-description">
+          Discover electronics, fashion, accessories, home essentials
+          and more at DAILYPICKZ.
+        </p>
+
+        <a href="#products" class="primary-btn">Explore Products →</a>
+      </div>
+
+      <div class="hero-decoration">
+        <div class="hero-circle">
+          <span>DP</span>
+          <small>DAILYPICKZ</small>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCTS -->
+    <section class="products-section" id="products">
+
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">OUR COLLECTION</p>
+          <h2>Explore Products</h2>
+          <p class="muted">
+            Find what you need, all in one place.
+          </p>
+        </div>
+      </div>
+
+      <div id="productGrid" class="product-grid"></div>
+
+      <div id="emptyMessage" class="empty-message hidden">
+        <h3>No products found</h3>
+        <p>Try another search or check back later.</p>
+      </div>
+
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about-section" id="about">
+      <div class="about-label">ABOUT DAILYPICKZ</div>
+
+      <h2>Shopping Made Simple.</h2>
+
+      <p>
+        DAILYPICKZ is an independent retail business focused on bringing
+        customers a variety of products in one convenient place.
+        From electronics and fashion to accessories and household
+        essentials, we aim to make discovering products simple and
+        convenient.
+      </p>
+
+      <a href="#contact" class="primary-btn">Get In Touch</a>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact-section" id="contact">
+      <div>
+        <p class="eyebrow">WE ARE HERE TO HELP</p>
+        <h2>Contact DAILYPICKZ</h2>
+        <p class="muted">
+          Have a question about a product? Contact our business.
+        </p>
+      </div>
+
+      <div class="contact-card">
+        <h3>Business Information</h3>
+
+        <p><strong>Business:</strong> DAILYPICKZ</p>
+
+        <!-- Replace these details with your real contact information. -->
+        <p><strong>Location:</strong> Maiduguri, Borno State, Nigeria</p>
+
+        <p>
+          <strong>Email:</strong>
+          <a id="contactEmail" href="mailto:your-email@example.com">
+            your-email@example.com
+          </a>
+        </p>
+
+        <p>
+          <strong>Phone:</strong>
+          <span id="contactPhone">Add your business phone number</span>
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
   <footer class="footer">
-    <div class="container footer-inner">
-      <div class="footer-brand">
-        <span class="logo-text">DAILYPICKZ</span>
-        <p>Curated daily essentials for modern living.</p>
-      </div>
-      <div class="footer-links">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="cart.html">Cart</a>
-      </div>
-      <p class="copyright">© 2026 DAILYPICKZ · Maiduguri, Borno State</p>
-    </div>
+    <a href="#home" class="logo footer-logo">
+      DAILY<span>PICKZ</span>
+    </a>
+
+    <p>Shop Smart. Choose Better.</p>
+
+    <p class="copyright">
+      © <span id="year"></span> DAILYPICKZ. All rights reserved.
+    </p>
   </footer>
 
-  <!-- Toast notification -->
-  <div id="toast" class="toast"></div>
+  <!-- ACCOUNT MODAL -->
+  <div class="modal hidden" id="accountModal">
+    <div class="modal-card">
 
-<script src="https://cdn.jsdelivr.net/npm/appwrite@16.0.0"></script>
-<script src="js/appwrite.js"></script>
-<script src="js/products.js"></script>
-<script src="js/cart.js"></script>
-<script src="js/main.js"></script>
+      <button class="close-modal" id="closeModal"
+              aria-label="Close">&times;</button>
+
+      <div class="modal-logo">DAILY<span>PICKZ</span></div>
+
+      <h2 id="modalTitle">Welcome Back</h2>
+      <p id="modalSubtitle">Login to your account.</p>
+
+      <form id="accountForm">
+
+        <div id="nameField" class="form-field hidden">
+          <label for="fullName">Full Name</label>
+          <input id="fullName" type="text"
+                 placeholder="Enter your full name">
+        </div>
+
+        <div class="form-field">
+          <label for="email">Email Address</label>
+          <input id="email" type="email"
+                 placeholder="you@example.com" required>
+        </div>
+
+        <div class="form-field">
+          <label for="password">Password</label>
+          <input id="password" type="password"
+                 placeholder="Enter password" required minlength="8">
+        </div>
+
+        <button class="primary-btn submit-btn" type="submit"
+                id="submitAccount">Login</button>
+
+        <p id="formMessage" class="form-message" role="status"></p>
+
+        <p class="switch-mode">
+          <span id="switchText">New to DAILYPICKZ?</span>
+          <button type="button" id="switchMode">Create account</button>
+        </p>
+
+      </form>
+
+    </div>
+  </div>
+
+  <!-- PRODUCT DETAILS MODAL -->
+  <div class="modal hidden" id="productModal">
+    <div class="modal-card product-modal-card">
+      <button class="close-modal" id="closeProductModal"
+              aria-label="Close">&times;</button>
+
+      <img id="detailImage" src="" alt="Product image">
+
+      <p class="eyebrow">PRODUCT DETAILS</p>
+      <h2 id="detailName"></h2>
+      <p id="detailPrice" class="detail-price"></p>
+      <p id="detailDescription"></p>
+
+      <button id="paymentBtn" class="primary-btn submit-btn">
+        Continue to Order
+      </button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
