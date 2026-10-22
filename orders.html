@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Orders – DAILYPICKZ</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/appwrite@16.0.0"></script>
+</head>
+<body>
+
+  <div class="contact-bar">
+    <span>Call / WhatsApp: </span>
+    <a href="tel:07070226669">07070226669</a> |
+    <a href="https://wa.me/2347070226669" target="_blank">WhatsApp</a> |
+    <a href="mailto:freefire25136197@gmail.com">freefire25136197@gmail.com</a>
+  </div>
+
+  <header class="header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <img src="logo.png" alt="DAILYPICKZ" onerror="this.style.display='none'">
+        <span class="logo-text">DAILYPICKZ</span>
+      </a>
+      <div class="header-right">
+        <nav class="nav">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="index.html#products" class="nav-link">Products</a>
+          <a href="about.html" class="nav-link">About</a>
+          <a href="cart.html" class="nav-link cart-link">
+            Cart <span id="cart-count" class="cart-badge">0</span>
+          </a>
+          <a href="orders.html" class="nav-link active">My Orders</a>
+          <a href="login.html" class="nav-link" id="login-link">Login</a>
+          <a href="register.html" class="nav-link" id="register-link">Register</a>
+          <span id="user-name" style="display:none; color:#FF6B35; font-weight:500;"></span>
+          <a href="#" class="nav-link" id="logout-link" style="display:none;">Logout</a>
+        </nav>
+        <button class="menu-toggle" id="menu-toggle" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-nav" id="mobile-nav">
+    <a href="index.html">Home</a>
+    <a href="index.html#products">Products</a>
+    <a href="about.html">About</a>
+    <a href="cart.html">Cart</a>
+    <a href="orders.html">My Orders</a>
+  </div>
+
+  <main class="cart-page">
+    <div class="container">
+      <h1 class="page-title">My Orders</h1>
+      <div id="orders-list">
+        <p style="text-align:center; color:#6B7280; padding:40px 0;">Loading your orders...</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="logo-text">DAILYPICKZ</span>
+        <p>Curated daily essentials for modern living.</p>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="cart.html">Cart</a>
+        <a href="orders.html">My Orders</a>
+      </div>
+      <p class="copyright">© 2026 DAILYPICKZ · Maiduguri, Borno State</p>
+    </div>
+  </footer>
+
+  <script src="js/appwrite.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/orders.js"></script>
+</body>
+</html>
